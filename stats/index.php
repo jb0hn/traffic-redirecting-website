@@ -5,7 +5,6 @@
   <head>
     <meta charset="utf-8">
     <title>Magisterskie Badanie | Statystyki</title>
-    
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -32,7 +31,9 @@
         <tbody>
           <?php foreach ($userData as $arrayKey => $array): ?>
             <tr>
-            <?php foreach ($array as $value): ?>
+            <?php foreach ($array as $key => $value): ?>
+              <!-- convert timestamp +2h -->
+              <?php if ($key === 'accessDate') {$value = date( "Y-m-d H:i:s", strtotime( $value ) + 2 * 3600 );} ?>
               <td><?php echo $value; ?></td>
             <?php endforeach; ?>
             </tr>
